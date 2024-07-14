@@ -15,6 +15,7 @@ public sealed class TestPlogon : IDalamudPlugin
     [PluginService] internal static ICommandManager CommandManager { get; private set; } = null!;
 
     private const string CommandName = "/pos";
+    private const string ConfigCommandName = "/testplogon";
 
     public Configuration Configuration { get; init; }
 
@@ -40,6 +41,12 @@ public sealed class TestPlogon : IDalamudPlugin
             HelpMessage = "A useful message to display in /xlhelp"
         });
 
+        CommandManager.AddHandler(ConfigCommandName, new CommandInfo(onConfigCommand)
+        {
+            HelpMessage = "Open the settings"
+        });
+
+
         PluginInterface.UiBuilder.Draw += DrawUI;
 
         // This adds a button to the plugin installer entry of this plugin which allows
@@ -58,12 +65,18 @@ public sealed class TestPlogon : IDalamudPlugin
         MainWindow.Dispose();
 
         CommandManager.RemoveHandler(CommandName);
+        CommandManager.RemoveHandler(ConfigCommandName);
     }
 
     private void OnCommand(string command, string args)
     {
         // in response to the slash command, just toggle the display status of our main ui
         ToggleMainUI();
+    }
+
+    private void onConfigCommand(string command, string args)
+    {
+        ToggleConfigUI();
     }
 
     private void DrawUI() => WindowSystem.Draw();
