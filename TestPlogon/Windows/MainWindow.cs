@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Dalamud.Interface.Internal;
 using Dalamud.Interface.Utility;
@@ -11,12 +11,12 @@ namespace TestPlogon.Windows;
 public class MainWindow : Window, IDisposable
 {
     private string GoatImagePath;
-    private Plugin Plugin;
+    private TestPlogon Plugin;
 
     // We give this window a hidden ID using ##
     // So that the user will see "My Amazing Window" as window title,
     // but for ImGui the ID is "My Amazing Window##With a hidden ID"
-    public MainWindow(Plugin plugin, string goatImagePath)
+    public MainWindow(TestPlogon plugin, string goatImagePath)
         : base("My Amazing Window##With a hidden ID", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         SizeConstraints = new WindowSizeConstraints
@@ -43,7 +43,7 @@ public class MainWindow : Window, IDisposable
         ImGui.Spacing();
 
         ImGui.Text("Have a goat:");
-        var goatImage = Plugin.TextureProvider.GetFromFile(GoatImagePath).GetWrapOrDefault();
+        var goatImage = TestPlogon.TextureProvider.GetFromFile(GoatImagePath).GetWrapOrDefault();
         if (goatImage != null)
         {
             ImGuiHelpers.ScaledIndent(55f);

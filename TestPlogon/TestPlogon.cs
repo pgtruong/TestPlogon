@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.Command;
+using Dalamud.Game.Command;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using System.IO;
@@ -8,13 +8,13 @@ using TestPlogon.Windows;
 
 namespace TestPlogon;
 
-public sealed class Plugin : IDalamudPlugin
+public sealed class TestPlogon : IDalamudPlugin
 {
     [PluginService] internal static IDalamudPluginInterface PluginInterface { get; private set; } = null!;
     [PluginService] internal static ITextureProvider TextureProvider { get; private set; } = null!;
     [PluginService] internal static ICommandManager CommandManager { get; private set; } = null!;
 
-    private const string CommandName = "/pmycommand";
+    private const string CommandName = "/pos";
 
     public Configuration Configuration { get; init; }
 
@@ -22,7 +22,7 @@ public sealed class Plugin : IDalamudPlugin
     private ConfigWindow ConfigWindow { get; init; }
     private MainWindow MainWindow { get; init; }
 
-    public Plugin()
+    public TestPlogon()
     {
         Configuration = PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
 

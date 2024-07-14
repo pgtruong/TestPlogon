@@ -1,0 +1,12 @@
+{
+  "Author": "Uraro",
+  "Name": "Test Plogon",
+  "Punchline": "Uraro's test plogon, for funsies'.",
+  "Description": "Uraro's test plogon, featuring much testing, very funsies.",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "sample",
+    "plugin",
+    "goats"
+  ]
+}
