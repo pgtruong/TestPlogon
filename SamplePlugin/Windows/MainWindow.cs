@@ -6,7 +6,7 @@ using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using ImGuiNET;
 
-namespace SamplePlugin.Windows;
+namespace TestPlogon.Windows;
 
 public class MainWindow : Window, IDisposable
 {
